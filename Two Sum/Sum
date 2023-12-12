@@ -1,0 +1,26 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target){
+        int n=0;
+        int a1[]=new int[2];
+        for(int i=n+1;i<nums.length;i++)
+        {
+            if(n<nums.length-1)
+            {
+                if(target==(nums[n]+nums[i]))
+                {
+                    a1[0]=n;
+                    a1[1]=i;
+                }
+                else
+                {
+                    if(i==nums.length-1)
+                    {
+                        n=n+1;
+                        i=n;
+                    }
+                }
+            }
+        }
+        return a1;
+    }
+}
