@@ -1,0 +1,41 @@
+class Solution {
+    public int numSpecial(int[][] mat) {
+        int count=0;
+        int res=0;
+        int n=0;
+        for(int i=0;i<mat.length;i++)
+        {
+            for(int j=0;j<mat[0].length;j++)
+            {
+                if(mat[i][j]==1)
+                {
+                    count=count+1;
+                    n=j;
+                }
+            }
+            if(count==1)
+            {
+                for(int k=0;k<mat.length;k++)
+                    {
+                        if(i==k)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            if(mat[k][n]==1)
+                            {
+                                count=count+1;
+                            }
+                        }
+                    }
+                }
+            if(count==1)
+            {
+                res=res+1;
+            }
+            count=0;
+            }
+           return res;
+        }   
+    }
