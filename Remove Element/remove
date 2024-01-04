@@ -1,0 +1,21 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        ArrayList<Integer> a1=new ArrayList<Integer>();
+        for(int i=0;i<nums.length;i++)
+        {
+            if(val==nums[i])
+            {
+                continue;
+            }
+            else
+            {
+                a1.add(nums[i]);
+            }
+        }
+        for(int i=0;i<a1.size();i++)
+        {
+            nums[i]=a1.get(i);
+        }
+        return a1.size(); 
+    }
+}
