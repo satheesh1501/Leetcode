@@ -1,0 +1,15 @@
+class Solution {
+    public int[] dailyTemperatures(int[] temp) {
+        int[] res=new int[temp.length];
+        Stack<Integer> s1=new Stack<>();
+        for(int i=0;i<temp.length;i++)
+        {
+            while(!s1.isEmpty() && temp[s1.peek()]<temp[i])
+            {
+                res[s1.peek()]=i-s1.pop();
+            }
+            s1.push(i);
+        }
+        return res;
+    }
+}
