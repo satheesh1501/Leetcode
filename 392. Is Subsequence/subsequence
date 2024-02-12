@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int k=0;
+        int h=0;
+        if(s.length()==0)
+            return true;
+        if(t.length()==0)
+            return false;
+        int i=0;
+        while(i<t.length() && k<s.length())
+        {
+            if(s.charAt(h)==t.charAt(i))
+            {
+                k=k+1;
+                h=h+1;
+            }
+            i++;
+        }
+        if(k==s.length())
+            return true;
+        return false;
+    }
+}
