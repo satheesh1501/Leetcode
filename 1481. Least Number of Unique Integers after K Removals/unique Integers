@@ -1,0 +1,31 @@
+class Solution {
+    public int findLeastNumOfUniqueInts(int[] arr, int k) {
+        Map<Integer, Integer> count=new HashMap<>();
+        for(int a:arr)
+            count.put(a,count.getOrDefault(a,0)+1);
+        List<Integer> m=new ArrayList<Integer>();
+        for(int b:count.values())
+            m.add(b);
+        int cn=0;
+        Collections.sort(m);
+        System.out.println(m);
+        for(int i=0;i<m.size();i++)
+        {
+            if(k>m.get(i))
+            {
+               k-=m.get(i);
+               m.set(i,0);
+            }
+            else
+            {
+                m.set(i,m.get(i)-k);
+                k=0;
+            }
+            if(m.get(i)!=0)
+                cn++;
+
+        }
+        return cn;
+
+    }
+}
