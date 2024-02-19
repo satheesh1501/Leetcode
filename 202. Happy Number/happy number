@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isHappy(int n) { 
+        List<Integer> l1=new ArrayList<Integer>(); 
+        while(true)
+        {
+            int k=square(n);
+            if(k==1)
+                return true;
+            else if(!l1.contains(k))
+            {
+                l1.add(k);
+                n=k;
+            }
+            else
+                return false;
+
+        }
+    }
+    public int square(int num)
+    {
+        int sum=0;
+        while(num>0)
+        {
+            sum+=(num%10)*(num%10);
+            num=num/10;
+        }
+        return sum;
+    }
+}
