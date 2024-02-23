@@ -1,0 +1,42 @@
+class Solution {
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+      Map<Integer, List<int[]>> ad= new HashMap<>();
+      for(int[] flight : flights)
+      {
+          ad.computeIfAbsent(flight[0], key->new ArrayList<>()).add(new int[] {flight[1], flight[2]});
+      }
+    
+      int mc[]=new int[n];
+      Arrays.fill(mc, Integer.MAX_VALUE);
+      mc[src]=0;
+
+      Queue<int[]> q1=new LinkedList<>();
+      q1.offer(new int[] {src, 0});
+      int stop=0;
+
+      while(!q1.isEmpty()  && stop <=k)
+      {
+          int sz=q1.size();
+          while(sz--> 0)
+          {
+              int current []=q1.poll();
+              int node = current[0];
+              int cost=current[1];
+
+              if(!ad.containsKey(node)) continue;
+
+              for(int [] next : ad.get(node))
+              {
+                  int neighbour = next[0];
+                  int price = next[1];
+                  if(price + cost >=mc[neighbour]) continue;
+                  mc[neighbour] =  price + cost ;
+                  q1.offer(new int[] {neighbour, mc[neighbour]});
+
+              }
+          }
+          stop++;
+      }
+      return mc[dst] == Integer.MAX_VALUE ? -1 : mc[dst];
+    }
+}
